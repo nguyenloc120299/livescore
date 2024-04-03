@@ -54,7 +54,10 @@ export default function handler(
                 const logo_team_b = $(match_info)
                   .find(".group .team.team-b img.lazy")
                   .attr("data-original");
-
+                const score =
+                  $(match_info).find(".group .score .name span:nth-child(1)").text().trim() +
+                  "-" +
+                  $(match_info).find(".group .score .name span:nth-child(3)").text().trim();
                 //next page
 
                 const nextPageUrl = $(match_info).find(".more a").attr("href");
@@ -71,6 +74,7 @@ export default function handler(
                     name: name_team_b,
                     logo: logo_team_b,
                   },
+                  score,
                   nextPageUrl,
                   formation,
                 });
