@@ -1,0 +1,20 @@
+@screen lm {
+    :root {
+      font-size: 1px;
+    }
+  }
+  @screen m {
+    :root {
+      font-size: 1px;
+    }
+  }
+  @screen t {
+    :root {
+      font-size: 1px;
+    }
+  }
+  @screen d {
+    :root {
+      font-size: 1px;
+    }
+  }

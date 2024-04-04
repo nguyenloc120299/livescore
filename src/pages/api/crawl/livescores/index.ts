@@ -23,11 +23,10 @@ export default function handler(
             return this.nodeType === 3;
           })
           .text()
-          .trim();
+          .replace(/-/g, '').trim();
         const linkText = $(element).find(".category-title a").text().trim();
         const flag = $(element)
-          .find(".category-title .flags-category")
-          .css("background");
+          .find(".category-title .flags-category").attr('class')
         const captionDays = $(element)
           .find(".list_match .caption-days .title")
           .text()
@@ -55,16 +54,24 @@ export default function handler(
                   .find(".group .team.team-b img.lazy")
                   .attr("data-original");
                 const score =
-                  $(match_info).find(".group .score .name span:nth-child(1)").text().trim() +
+                  $(match_info)
+                    .find(".group .score .name span:nth-child(1)")
+                    .text()
+                    .trim() +
                   "-" +
-                  $(match_info).find(".group .score .name span:nth-child(3)").text().trim();
+                  $(match_info)
+                    .find(".group .score .name span:nth-child(3)")
+                    .text()
+                    .trim();
                 //next page
 
-                const nextPageUrl = $(match_info).find(".more a").attr("href");
-
+                const nextPageUrl = $(match_info).find(".more a").attr("href") as string ;
+                const parts = nextPageUrl.split('/');
+                const match_id = parts[parts.length - 2];
                 let formation: any;
 
                 listMatch.push({
+                  match_id,
                   time,
                   team_a: {
                     name: name_team_a,
@@ -81,13 +88,15 @@ export default function handler(
               });
           });
         data.push({
-          categoryTitle: categoryTitle + " " + linkText,
+          region: categoryTitle,
+          flag,
+          categoryTitle: linkText,
           captionDays,
           listMatch,
         });
       });
 
-      res.status(200).json({ pageTitle: data });
+      res.status(200).json(data);
     })
     .catch((error) => {
       console.log("Failed to retrieve page:", error);

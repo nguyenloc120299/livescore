@@ -16,7 +16,6 @@ export default function handler(
 
       let result = [] as any;
       $(".text-middle").each((index, item) => {
-     
         
         const league_name = $(item).find(".league-name").text().trim();
         const class_league_name = $(item)
