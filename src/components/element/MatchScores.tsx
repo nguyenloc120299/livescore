@@ -6,13 +6,13 @@ import React from "react";
 import { FaChevronRight } from "react-icons/fa";
 
 interface Props {
- 
   categoryTitle: string;
   captionDays: string;
   flag: string;
   region: string;
   listMatch: Array<{
-    match_id: string,
+    slug: string;
+    match_id: string;
     time: string;
     team_a: {
       name: string;
@@ -49,7 +49,7 @@ const MatchScores: React.FC<Props> = (props) => {
       <div className="text-[#aaa] pb-[5rem] ">
         {!!props.listMatch &&
           props.listMatch.map((item, index) => (
-            <Link href={ROUTES.MATCH + `/${item.match_id}`} key={index}>
+            <Link href={item.slug} key={index}>
               <div className="mb-[5rem] flex items-center text-[14px] relative py-[10rem] bg-[#181818] hover:bg-[#333] rounded-[8rem] mx-[10rem]">
                 <span className="text-[14rem] font-[700] h-[40rem] flex items-center justify-center flex-0 w-[50rem]">
                   {item.time}

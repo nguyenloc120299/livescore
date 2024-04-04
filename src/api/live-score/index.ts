@@ -3,7 +3,9 @@ const url = "https://thethao247.vn/livescores/";
 
 export const handleCrawlLiveScore = async () => {
   try {
-    const response = await fetch(url, { next: { revalidate: 3600 } ,mode: 'no-cors'});
+    const response = await fetch(url, {
+      mode: "no-cors",
+    });
     const html = await response.text();
     const $ = cheerio.load(html);
     const data = [] as any;
@@ -57,14 +59,18 @@ export const handleCrawlLiveScore = async () => {
                 .trim();
               //next page
 
-              const nextPageUrl = $(match_info).find(".more a").attr("href") as string;
-              const parts = nextPageUrl.split('/');
-              const match_id = parts[parts.length - 2];
+              const nextPageUrl = $(match_info)
+                .find(".more a")
+                .attr("href") as string;
+              const parts = nextPageUrl.split("/");
+              const match_id = parts[parts.length - 2];   
+              const slug = nextPageUrl.split("/").slice(4).join("/")
               let formation: any;
 
               listMatch.push({
                 match_id,
                 time,
+                slug,
                 team_a: {
                   name: name_team_a,
                   logo: logo_team_a,
@@ -73,9 +79,9 @@ export const handleCrawlLiveScore = async () => {
                   name: name_team_b,
                   logo: logo_team_b,
                 },
-                score :{
-                    score_a,
-                    score_b
+                score: {
+                  score_a,
+                  score_b,
                 },
                 nextPageUrl,
                 formation,
