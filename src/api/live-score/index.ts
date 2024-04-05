@@ -5,6 +5,7 @@ export const handleCrawlLiveScore = async () => {
   try {
     const response = await fetch(url, {
       mode: "no-cors",
+      cache:'no-cache'
     });
     const html = await response.text();
     const $ = cheerio.load(html);

@@ -14,6 +14,9 @@ const config: Config = {
       t: "720px", // tablet
       d: "1080px", // desktop
     },
+    colors:{
+      "primary-1":'#ff6b00'
+    },
     extend: {
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
