@@ -16,12 +16,12 @@ const MainLayout: React.FC<Props> = ({ children }) => {
     <>
       {breakpoint !== "mobile" && <MainTopBar/>}
       <main
-        className={clsx("mx-auto max-w-[1200rem] max-t:pb-20 d:flex", {
+        className={clsx("mx-auto max-w-[1200rem] max-t:pb-20 flex", {
           "pt-[60rem]": breakpoint !== "mobile",
         })}
       >
         <MainSideBar />
-        <div className="relative px-5 d:w-[calc(100%-274rem)] d:px-[80rem]">
+        <div className="relative px-5  d:px-[80rem] w-full">
           {" "}
           {children}
         </div>

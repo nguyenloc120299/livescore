@@ -8,6 +8,9 @@ const LineUps = async () => {
   const pathName = headersList.get("x-pathname") as string;
 
   const data = await handleCrawlMatchLineups(pathName);
+  
+  console.log("🚀 ~ LineUps ~ data:", data)
+
   if (!data?.home?.homeplayer?.length || !data?.away?.awayplayer?.length)
     return (
       <div className="text-center text-[11rem]">Chưa cập nhật dữ liệu</div>

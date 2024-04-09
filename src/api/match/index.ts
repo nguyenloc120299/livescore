@@ -182,6 +182,8 @@ export const handleCrawlMatchLineups = async (url: string) => {
     const formationAway = $(".away-info .formation").text().trim();
 
     const homeplayer = [] as Array<any>;
+    const benchPlayerHome = [] as Array<any>;
+    const benchPlayerAway = [] as Array<any>;
     $(".home .players-row").each((i, el) => {
       const playerInfo = [] as any;
       $(el)
@@ -226,7 +228,39 @@ export const handleCrawlMatchLineups = async (url: string) => {
       awayplayer.push(playerInfo);
     });
 
+    $(".lineups .match-content.lineups  .lineups .home div").each((i, el) => {
+      const numberPlayer = $(el).find(".number").text().trim();
+      const avatarPlayer = $(el).find(".player-avatar").attr("src");
+      const namePlayer = $(el).find(".info ").text().trim();
+      const icons=$(el).find(".info .evt").map((i,item)=>{
+        return $(item).html()
+      }).get()
+      benchPlayerHome.push({
+        numberPlayer,
+        avatarPlayer,
+        namePlayer,
+        icons
+      });
+    });
+
+    $(".lineups .match-content.lineups  .lineups .away div").each((i, el) => {
+      const numberPlayer = $(el).find(".number").text().trim();
+      const avatarPlayer = $(el).find(".player-avatar").attr("src");
+      const namePlayer = $(el).find(".info ").text().trim();
+      const icons=$(el).find(".info .evt").map((i,item)=>{
+        return $(item).html()
+      }).get()
+      benchPlayerAway.push({
+        numberPlayer,
+        avatarPlayer,
+        namePlayer,
+        icons
+      });
+    });
+
     return {
+      benchPlayerAway,
+      benchPlayerHome,
       home: {
         homeplayer,
         nameClubHome,

@@ -48,7 +48,7 @@ const config: Config = {
       lm: "1px",
       m: "376px", // mobile
       t: "720px", // tablet
-      d: "1080px", // desktop
+      d: "1360px", // desktop
     },
     colors: {
       "primary-1": "#ff6b00",

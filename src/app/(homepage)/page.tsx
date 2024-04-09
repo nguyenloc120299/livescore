@@ -8,7 +8,7 @@ const HomePage = async () => {
 
   if (!data) return notFound();
   return (
-    <div className="border border-[#222] rounded-[8rem] ml-[17rem] min-h-[630rem] max-w-[470rem] w-full ">
+    <div className="border border-[#222] rounded-[8rem] t:ml-[17rem] min-h-[630rem] w-full t:w-[470rem] ">
       {!!data?.length &&
         data.map((item: any, index: number) => (
           <MatchScores
