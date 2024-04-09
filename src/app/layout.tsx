@@ -4,6 +4,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.css";
 import clsx from "clsx";
 import MainLayout from "@/layout";
+import NextTopLoader from "nextjs-toploader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={clsx(lato.variable, helvetica.variable)}>
+        <NextTopLoader
+          color="#FF6813"
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #FF6813,0 0 5px #FF6813"
+        />
         <MainLayout>{children}</MainLayout>
       </body>
     </html>

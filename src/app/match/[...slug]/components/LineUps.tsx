@@ -65,7 +65,7 @@ const LineUps = async () => {
                           />
                         </div>
                       </div>
-                      <div className="text-[#fff] flex justify-center text-[11px] font-[700] text-center rg">
+                      <div className="text-[#fff] flex justify-center text-[10px] font-[700] text-center rg">
                         {player?.name}
                       </div>
                     </div>
@@ -108,8 +108,8 @@ const LineUps = async () => {
           <div className="no lo"></div>
         </div>
         <span className="text-[#fdfdfd] flex text-[11rem] mb-[15rem] mt-[14rem]">
-          <span className="font-[900] mr-[5rem] uppercase">Udinese</span>
-          <span className="font-[400]">3-5-1-1</span>
+          <span className="font-[900] mr-[5rem] uppercase">{data?.away?.nameClubAway}</span>
+          <span className="font-[400]">{data?.away?.formationAway}</span>
         </span>
       </div>
     </div>
