@@ -173,26 +173,73 @@ export const handleCrawlMatchLineups = async (url: string) => {
     );
     const html = await response.text();
     const $ = cheerio.load(html);
+    const nameClubHome = $(".home-info .name").text().trim();
+    const nameCoachHome = $(".home-info .name small").text().trim();
+    const formationHome = $(".home-info .formation").text().trim();
 
-    
-    const homeplayer = $(".home .players-row").map((i, el) => {
-      const playerInfo = $(el)
+    const nameClubAway = $(".away-info .name").text().trim();
+    const nameCoachAway = $(".away-info .name small").text().trim();
+    const formationAway = $(".away-info .formation").text().trim();
+
+    const homeplayer = [] as Array<any>;
+    $(".home .players-row").each((i, el) => {
+      const playerInfo = [] as any;
+      $(el)
         .find(".item li")
-        .map((index, element) => {
-          const name = $(element).find(".name").text().trim();
-          const playerAvatar = $(element).find(".player-avatar").attr("src");
-          const evt = $(element).find(".evt").map((idx, evtElement) => {
-            return $(evtElement).html();
-          }).get();
-          
-          return { name, playerAvatar, evt };
-        }).get();
-    
-      return playerInfo;
-    }).get();
-    
-    return { homeplayer };
-    
+        .each((i, player) => {
+          const name = $(player).find(".name").text().trim();
+          const playerAvatar = $(player).find(".player-avatar").attr("src");
+          const evt = $(player)
+            .find(".evt")
+            .map((idx, evtElement) => {
+              return $(evtElement).html();
+            })
+            .get();
+          playerInfo.push({
+            name,
+            playerAvatar,
+            evt,
+          });
+        });
+      homeplayer.push(playerInfo);
+    });
+    const awayplayer = [] as Array<any>;
+    $(".away .players-row").each((i, el) => {
+      const playerInfo = [] as any;
+      $(el)
+        .find(".item li")
+        .each((i, player) => {
+          const name = $(player).find(".name").text().trim();
+          const playerAvatar = $(player).find(".player-avatar").attr("src");
+          const evt = $(player)
+            .find(".evt")
+            .map((idx, evtElement) => {
+              return $(evtElement).html();
+            })
+            .get();
+          playerInfo.push({
+            name,
+            playerAvatar,
+            evt,
+          });
+        });
+      awayplayer.push(playerInfo);
+    });
+
+    return {
+      home: {
+        homeplayer,
+        nameClubHome,
+        nameCoachHome,
+        formationHome,
+      },
+      away: {
+        awayplayer,
+        nameCoachAway,
+        nameClubAway,
+        formationAway,
+      },
+    };
   } catch (error) {
     console.log(error);
   }

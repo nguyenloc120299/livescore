@@ -21,7 +21,7 @@ const MainTopBar = () => {
         </div>
         {NAVIGATION_LINK.map((menu, index) => (
           <Link href={menu.href} key={index}>
-            <div className="flex items-center gap-20">
+            <div className="flex items-center gap-2">
               <span>{menu.icon}</span>
               <span>{menu.title}</span>
             </div>

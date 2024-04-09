@@ -17,3 +17,99 @@ body {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.io {
+  border: 2px solid #96a772;
+  border-radius: 9999px;
+  height: 76px;
+  left: calc(50% - 38px);
+  top: calc(50% - 38px);
+  width: 76px;
+  position: absolute;
+}
+
+.ko.mo {
+  top: -2px;
+}
+.ko {
+  height: 10%;
+  z-index: 19;
+}
+.ko {
+  border: 2px solid #96a772;
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+.ko.mo .jo {
+  top: -2px;
+}
+.jo {
+  border: 2px solid #96a772;
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+.jo {
+  height: 24rem;
+}
+.no.mo {
+  top: 66px;
+  transform: rotate(180deg);
+}
+.no {
+  border: 2px solid #96a772;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  height: 15px;
+  left: calc(50% - 29px);
+  position: absolute;
+  width: 58px;
+}
+.ko.lo {
+  border-top: 2px solid #96a772;
+  bottom: -2px;
+  top: auto;
+}
+.ko {
+  height: 10%;
+  z-index: 19;
+}
+.ko {
+  border: 2px solid #96a772;
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+
+.ko.lo .jo {
+  border-top: 2px solid #96a772;
+  bottom: -2px;
+  top: auto;
+}
+
+.jo {
+  border: 2px solid #96a772;
+  left: 25%;
+  position: absolute;
+  width: 50%;
+}
+
+.jo {
+  height: 24rem;
+}
+
+.no.lo {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-width: 2px;
+  bottom: 67px;
+  top: auto;
+}
+.no {
+  border: 2px solid #96a772;
+  border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  height: 15px;
+  left: calc(50% - 29px);
+  position: absolute;
+  width: 58px;
+}
