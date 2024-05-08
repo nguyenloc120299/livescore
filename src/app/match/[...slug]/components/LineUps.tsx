@@ -8,115 +8,200 @@ const LineUps = async () => {
   const pathName = headersList.get("x-pathname") as string;
 
   const data = await handleCrawlMatchLineups(pathName);
-  
-  console.log("🚀 ~ LineUps ~ data:", data)
+  console.log(data);
 
   if (!data?.home?.homeplayer?.length || !data?.away?.awayplayer?.length)
     return (
       <div className="text-center text-[11rem]">Chưa cập nhật dữ liệu</div>
     );
+  if (!data?.isField) return (
+    <>
+      <div className="text-[18px]">
+        Đội hình ra sân
+      </div>
+      <div className="flex justify-between border-b py-2">
+        <div>
+          {
+            data?.home?.homeplayer?.slice(0, 11).map((item, index) => (
+              <div className="flex items-center py-2 px-2" key={index}>
 
-  return (
-    <div className="">
-      <div className="bg-[#58741f] px-[15rem] pt-[1rem]">
-        <span className="text-[#fdfdfd] flex text-[11rem] mb-[15rem] mt-[14rem]">
-          <span className="font-[900] mr-[5rem] uppercase">
-            {data?.home?.nameClubHome}
+                <div className="min-w-[25px] text-[#6c757d] pr-[.5rem]">
+                  {item?.numberPlayer}
+                </div>
+                <img src={`https://m.thethao247.vn${item?.avatarPlayer}`} alt={item?.namePlayer} width={30} height={30} />
+                <div className="flex flex-row-reverse">
+                  {item?.namePlayer}
+                </div>
+              </div>
+
+            ))
+          }
+        </div>
+        <div>
+          {
+            data?.away?.awayplayer?.slice(0, 11).map((item, index) => (
+              <div className="flex items-center py-2 px-2" key={index}>
+
+                <div className="min-w-[25px] text-[#6c757d] pr-[.5rem]">
+                  {item?.numberPlayer}
+                </div>
+                <img src={`https://m.thethao247.vn${item?.avatarPlayer}`} alt={item?.namePlayer} width={30} height={30} />
+                <div className="flex flex-row-reverse">
+                  {item?.namePlayer}
+                </div>
+              </div>
+
+            ))
+          }
+        </div>
+
+      </div>
+
+      <div className="text-[18px]">
+        Dự bị
+      </div>
+      <div className="flex justify-between border-b py-2">
+        <div>
+          {
+            data?.home?.homeplayer?.slice(11).map((item, index) => (
+              <div className="flex items-center py-2 px-2" key={index}>
+
+                <div className="min-w-[25px] text-[#6c757d] pr-[.5rem]">
+                  {item?.numberPlayer}
+                </div>
+                <img src={`https://m.thethao247.vn${item?.avatarPlayer}`} alt={item?.namePlayer} width={30} height={30} />
+                <div className="flex flex-row-reverse">
+                  {item?.namePlayer}
+                </div>
+              </div>
+
+            ))
+          }
+        </div>
+        <div>
+          {
+            data?.away?.awayplayer?.slice(11).map((item, index) => (
+              <div className="flex items-center py-2 px-2" key={index}>
+
+                <div className="min-w-[25px] text-[#6c757d] pr-[.5rem]">
+                  {item?.numberPlayer}
+                </div>
+                <img src={`https://m.thethao247.vn${item?.avatarPlayer}`} alt={item?.namePlayer} width={30} height={30} />
+                <div className="flex flex-row-reverse">
+                  {item?.namePlayer}
+                </div>
+              </div>
+
+            ))
+          }
+        </div>
+
+      </div>
+    </>
+
+  )
+  if (data?.isField)
+    return (
+      <div className="">
+        <div className="bg-[#58741f] px-[15rem] pt-[1rem]">
+          <span className="text-[#fdfdfd] flex text-[11rem] mb-[15rem] mt-[14rem]">
+            <span className="font-[900] mr-[5rem] uppercase">
+              {data?.home?.nameClubHome}
+            </span>
+            <span className="font-[400]">{data?.home?.formationHome}</span>
           </span>
-          <span className="font-[400]">{data?.home?.formationHome}</span>
-        </span>
-        <div
-          className="bg-[repeating-linear-gradient(180deg, #516d14, #516d14 10%, #58741f 0, #58741f 20%)] border-[2rem] border-[#96a772]
+          <div
+            className="bg-[repeating-linear-gradient(180deg, #516d14, #516d14 10%, #58741f 0, #58741f 20%)] border-[2rem] border-[#96a772]
         h-[708rem] overflow-hidden relative
         "
-        >
-          <div className="flex flex-col h-1/2 justify-between p-[10rem] absolute w-full z-[20]">
-            {!!data?.home?.homeplayer?.length &&
-              data?.home?.homeplayer.map((item, index) => (
-                <div className="flex items-start text-[#fff] " key={index}>
-                  {item?.map((player: any, index: number) => (
-                    <div className="flex-1" key={index}>
-                      <div className="flex justify-center text-center  ">
-                        <div className="h-[30px] w-[30px border-[2px] border-[#fff] bg-[#ad5900] rounded-full relative">
-                          <img
-                            src={player?.playerAvatar}
-                            alt={player?.name}
-                            className="w-full h-full rounded-full inline-block"
-                          />
+          >
+            <div className="flex flex-col h-1/2 justify-between p-[10rem] absolute w-full z-[20]">
+              {!!data?.home?.homeplayer?.length &&
+                data?.home?.homeplayer.map((item, index) => (
+                  <div className="flex items-start text-[#fff] " key={index}>
+                    {item?.map((player: any, index: number) => (
+                      <div className="flex-1" key={index}>
+                        <div className="flex justify-center text-center  ">
+                          <div className="h-[30px] w-[30px border-[2px] border-[#fff] bg-[#ad5900] rounded-full relative">
+                            <img
+                              src={player?.playerAvatar}
+                              alt={player?.name}
+                              className="w-full h-full rounded-full inline-block"
+                            />
+                          </div>
+                        </div>
+                        <div className="text-[#fff] flex justify-center text-[11px] font-[700] text-center rg">
+                          {player?.name}
                         </div>
                       </div>
-                      <div className="text-[#fff] flex justify-center text-[11px] font-[700] text-center rg">
-                        {player?.name}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-          </div>
-          <div className="flex flex-col h-1/2 justify-between p-[10rem] absolute w-full z-[20] top-1/2">
-            {!!data?.away?.awayplayer?.length &&
-              data?.away?.awayplayer.map((item, index) => (
-                <div className="flex items-start text-[#fff] " key={index}>
-                  {item?.map((player: any, index: number) => (
-                    <div className="flex-1" key={index}>
-                      <div className="flex justify-center text-center  ">
-                        <div className="h-[30px] w-[30px border-[2px] border-[#fff] bg-[#212121] rounded-full relative">
-                          <img
-                            src={player?.playerAvatar}
-                            alt={player?.name}
-                            className="w-full h-full rounded-full inline-block"
-                          />
+                    ))}
+                  </div>
+                ))}
+            </div>
+            <div className="flex flex-col h-1/2 justify-between p-[10rem] absolute w-full z-[20] top-1/2">
+              {!!data?.away?.awayplayer?.length &&
+                data?.away?.awayplayer.map((item, index) => (
+                  <div className="flex items-start text-[#fff] " key={index}>
+                    {item?.map((player: any, index: number) => (
+                      <div className="flex-1" key={index}>
+                        <div className="flex justify-center text-center  ">
+                          <div className="h-[30px] w-[30px border-[2px] border-[#fff] bg-[#212121] rounded-full relative">
+                            <img
+                              src={player?.playerAvatar}
+                              alt={player?.name}
+                              className="w-full h-full rounded-full inline-block"
+                            />
+                          </div>
+                        </div>
+                        <div className="text-[#fff] flex justify-center text-[10px] font-[700] text-center rg">
+                          {player?.name}
                         </div>
                       </div>
-                      <div className="text-[#fff] flex justify-center text-[10px] font-[700] text-center rg">
-                        {player?.name}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              ))}
-          </div>
-          <div className="h-full overflow-hidden relative w-full ">
-            <div className="left-[-20px] top-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
+                    ))}
+                  </div>
+                ))}
+            </div>
+            <div className="h-full overflow-hidden relative w-full ">
+              <div className="left-[-20px] top-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
+              <div
+                className=" top-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"
+                style={{
+                  left: "calc(100% - 20px)",
+                }}
+              ></div>
+              <div className="right-[-20px] bottom-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
+              <div className="left-[-20px] bottom-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
+            </div>
             <div
-              className=" top-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"
+              className="border border-[#96a772] absolute w-full"
               style={{
-                left: "calc(100% - 20px)",
+                top: "calc(50% - 2px)",
               }}
             ></div>
-            <div className="right-[-20px] bottom-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
-            <div className="left-[-20px] bottom-[-20px]  border-[2rem] border-[#96a772] h-[40rem] rounded-[9999rem] absolute w-[40rem]"></div>
+            <div
+              className="bg-[#96a772] rounded-[9999px] h-[6px] w-[6px] absolute"
+              style={{
+                left: "calc(50% - 3px)",
+                top: "calc(50% - 4px)",
+              }}
+            ></div>
+            <div className="io"></div>
+            <div className="ko mo">
+              <div className="jo"></div>
+            </div>
+            <div className="no mo"></div>
+            <div className="ko lo">
+              <div className="jo"></div>
+            </div>
+            <div className="no lo"></div>
           </div>
-          <div
-            className="border border-[#96a772] absolute w-full"
-            style={{
-              top: "calc(50% - 2px)",
-            }}
-          ></div>
-          <div
-            className="bg-[#96a772] rounded-[9999px] h-[6px] w-[6px] absolute"
-            style={{
-              left: "calc(50% - 3px)",
-              top: "calc(50% - 4px)",
-            }}
-          ></div>
-          <div className="io"></div>
-          <div className="ko mo">
-            <div className="jo"></div>
-          </div>
-          <div className="no mo"></div>
-          <div className="ko lo">
-            <div className="jo"></div>
-          </div>
-          <div className="no lo"></div>
+          <span className="text-[#fdfdfd] flex text-[11rem] mb-[15rem] mt-[14rem]">
+            <span className="font-[900] mr-[5rem] uppercase">{data?.away?.nameClubAway}</span>
+            <span className="font-[400]">{data?.away?.formationAway}</span>
+          </span>
         </div>
-        <span className="text-[#fdfdfd] flex text-[11rem] mb-[15rem] mt-[14rem]">
-          <span className="font-[900] mr-[5rem] uppercase">{data?.away?.nameClubAway}</span>
-          <span className="font-[400]">{data?.away?.formationAway}</span>
-        </span>
       </div>
-    </div>
-  );
+    );
 };
 
 export default LineUps;
