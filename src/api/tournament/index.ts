@@ -4,21 +4,24 @@ const url = "https://thethao247.vn/livescores/";
 
 export default async function handlerCrawlTournament() {
   try {
-    const response = await fetch(url,{ cache: 'force-cache',mode: 'no-cors' });
+    const response = await fetch(url,{ cache: 'no-cache',mode: 'no-cors' });
     const html = await response.text();
     const $ = cheerio.load(html);
 
     let result = [] as any;
-    $(".text-middle").each((index, item) => {
+    $(".list-leagues .text-middle").each((index, item) => {
       const nextPage = $(item).find("a").attr("href");
       const league_name = $(item).find(".league-name").text().trim();
       const class_league_name = $(item)
         .find("span.flags-category")
         .attr("class");
+      const imgFlag=$(item).find('.flags.flags-category').attr('src')      
+   
       result.push({
         league_name,
         class_league_name,
         nextPage,
+        imgFlag
       });
     });
 

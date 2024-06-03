@@ -9,7 +9,7 @@ const LineUps = async () => {
 
   const data = await handleCrawlMatchLineups(pathName);
   
-  console.log("🚀 ~ LineUps ~ data:", data)
+
 
   if (!data?.home?.homeplayer?.length || !data?.away?.awayplayer?.length)
     return (

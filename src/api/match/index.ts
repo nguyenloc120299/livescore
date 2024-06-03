@@ -100,7 +100,7 @@ export const handleCrawlMatchDetail = async (url: string) => {
 };
 
 export const handleCrawlMatchStatistics = async (url: string) => {
-  console.log(`https://thethao247.vn/livescores` + url + "/statistics");
+
   try {
     const response = await fetch(
       `https://thethao247.vn/livescores` + url + "/statistics",
@@ -163,7 +163,7 @@ export const handleCrawlMatchStatistics = async (url: string) => {
 };
 
 export const handleCrawlMatchLineups = async (url: string) => {
-  console.log(`https://thethao247.vn/livescores` + url + "/lineups");
+
   try {
     const response = await fetch(
       `https://thethao247.vn/livescores` + url + "/lineups",
