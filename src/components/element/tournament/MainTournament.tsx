@@ -22,8 +22,9 @@ const MainTournament = async () => {
           <TournamentItem
             league_name={item?.league_name}
             class_league_name={item?.class_league_name}
-            nextPage={item?.class_league_name}
+            nextPage={item?.nextPage}
             imgFlag={item?.imgFlag}
+            slug={item?.slug}
             key={index}
           />
         ))}

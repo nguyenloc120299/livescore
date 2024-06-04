@@ -26,7 +26,7 @@ const Summary: React.FC<Props> = (props) => {
     >
       {!!props.math_content.length &&
         props.math_content.map((item, i) => (
-          <>
+          <div key={i}>
             <div
               key={i}
               className="bg-[#181818] min-h-[38rem] border border-[#222] flex flex-nowrap text-[11px] justify-between py-[10rem] relative"
@@ -74,7 +74,7 @@ const Summary: React.FC<Props> = (props) => {
                   </div>
                 </div>
               ))}
-          </>
+          </div>
         ))}
     </div>
   );

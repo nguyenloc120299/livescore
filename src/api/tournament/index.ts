@@ -4,25 +4,30 @@ const url = "https://thethao247.vn/livescores/";
 
 export default async function handlerCrawlTournament() {
   try {
-    const response = await fetch(url,{ cache: 'no-cache',mode: 'no-cors' });
+    const response = await fetch(url, { cache: "no-cache", mode: "no-cors" });
     const html = await response.text();
     const $ = cheerio.load(html);
 
     let result = [] as any;
     $(".list-leagues .text-middle").each((index, item) => {
-      const nextPage = $(item).find("a").attr("href");
-      const league_name = $(item).find(".league-name").text().trim();
-      const class_league_name = $(item)
-        .find("span.flags-category")
-        .attr("class");
-      const imgFlag=$(item).find('.flags.flags-category').attr('src')      
-   
-      result.push({
-        league_name,
-        class_league_name,
-        nextPage,
-        imgFlag
-      });
+ 
+      if (!$(item).parents("#menuSections").length) {
+        const nextPage = $(item).find("a").attr("href") as string;
+        const league_name = $(item).find(".league-name").text().trim();
+        const class_league_name = $(item)
+          .find("span.flags-category")
+          .attr("class");
+        const imgFlag = $(item).find(".flags.flags-category").attr("src");
+        const slug = nextPage.split("/")[3]
+        
+        result.push({
+          league_name,
+          class_league_name,
+          nextPage,
+          imgFlag,
+          slug
+        });
+      }
     });
 
     return result;

@@ -182,85 +182,117 @@ export const handleCrawlMatchLineups = async (url: string) => {
     const formationAway = $(".away-info .formation").text().trim();
 
     const homeplayer = [] as Array<any>;
+    const awayplayer = [] as Array<any>;
     const benchPlayerHome = [] as Array<any>;
     const benchPlayerAway = [] as Array<any>;
-    $(".home .players-row").each((i, el) => {
-      const playerInfo = [] as any;
-      $(el)
-        .find(".item li")
-        .each((i, player) => {
-          const name = $(player).find(".name").text().trim();
-          const playerAvatar = $(player).find(".player-avatar").attr("src");
-          const evt = $(player)
-            .find(".evt")
-            .map((idx, evtElement) => {
-              return $(evtElement).html();
-            })
-            .get();
-          playerInfo.push({
-            name,
-            playerAvatar,
-            evt,
+    const isField = $(".field").length > 0;
+    if (isField) {
+      $(".home .players-row").each((i, el) => {
+        const playerInfo = [] as any;
+        $(el)
+          .find(".item li")
+          .each((i, player) => {
+            const name = $(player).find(".name").text().trim();
+            const playerAvatar = $(player).find(".player-avatar").attr("src");
+            const evt = $(player)
+              .find(".evt")
+              .map((idx, evtElement) => {
+                return $(evtElement).html();
+              })
+              .get();
+            playerInfo.push({
+              name,
+              playerAvatar,
+              evt,
+            });
           });
-        });
-      homeplayer.push(playerInfo);
-    });
-    const awayplayer = [] as Array<any>;
-    $(".away .players-row").each((i, el) => {
-      const playerInfo = [] as any;
-      $(el)
-        .find(".item li")
-        .each((i, player) => {
-          const name = $(player).find(".name").text().trim();
-          const playerAvatar = $(player).find(".player-avatar").attr("src");
-          const evt = $(player)
-            .find(".evt")
-            .map((idx, evtElement) => {
-              return $(evtElement).html();
-            })
-            .get();
-          playerInfo.push({
-            name,
-            playerAvatar,
-            evt,
+        homeplayer.push(playerInfo);
+      });
+
+      $(".away .players-row").each((i, el) => {
+        const playerInfo = [] as any;
+        $(el)
+          .find(".item li")
+          .each((i, player) => {
+            const name = $(player).find(".name").text().trim();
+            const playerAvatar = $(player).find(".player-avatar").attr("src");
+            const evt = $(player)
+              .find(".evt")
+              .map((idx, evtElement) => {
+                return $(evtElement).html();
+              })
+              .get();
+            playerInfo.push({
+              name,
+              playerAvatar,
+              evt,
+            });
           });
+        awayplayer.push(playerInfo);
+      });
+
+      $(".lineups .match-content.lineups  .lineups .home div").each((i, el) => {
+        const numberPlayer = $(el).find(".number").text().trim();
+        const avatarPlayer = $(el).find(".player-avatar").attr("src");
+        const namePlayer = $(el).find(".info ").text().trim();
+        const icons = $(el)
+          .find(".info .evt")
+          .map((i, item) => {
+            return $(item).html();
+          })
+          .get();
+        benchPlayerHome.push({
+          numberPlayer,
+          avatarPlayer,
+          namePlayer,
+          icons,
         });
-      awayplayer.push(playerInfo);
-    });
-
-    $(".lineups .match-content.lineups  .lineups .home div").each((i, el) => {
-      const numberPlayer = $(el).find(".number").text().trim();
-      const avatarPlayer = $(el).find(".player-avatar").attr("src");
-      const namePlayer = $(el).find(".info ").text().trim();
-      const icons=$(el).find(".info .evt").map((i,item)=>{
-        return $(item).html()
-      }).get()
-      benchPlayerHome.push({
-        numberPlayer,
-        avatarPlayer,
-        namePlayer,
-        icons
       });
-    });
 
-    $(".lineups .match-content.lineups  .lineups .away div").each((i, el) => {
-      const numberPlayer = $(el).find(".number").text().trim();
-      const avatarPlayer = $(el).find(".player-avatar").attr("src");
-      const namePlayer = $(el).find(".info ").text().trim();
-      const icons=$(el).find(".info .evt").map((i,item)=>{
-        return $(item).html()
-      }).get()
-      benchPlayerAway.push({
-        numberPlayer,
-        avatarPlayer,
-        namePlayer,
-        icons
+      $(".lineups .match-content.lineups  .lineups .away div").each((i, el) => {
+        const numberPlayer = $(el).find(".number").text().trim();
+        const avatarPlayer = $(el).find(".player-avatar").attr("src");
+        const namePlayer = $(el).find(".info ").text().trim();
+        const icons = $(el)
+          .find(".info .evt")
+          .map((i, item) => {
+            return $(item).html();
+          })
+          .get();
+        benchPlayerAway.push({
+          numberPlayer,
+          avatarPlayer,
+          namePlayer,
+          icons,
+        });
       });
-    });
+    } else {
+      $(".home .d-flex.align-items-center.py-2.px-2").each((i, el) => {
+        const numberPlayer = $(el).find(".number").text().trim();
+        const avatarPlayer = $(el).find(".player-avatar").attr("src");
+        const namePlayer = $(el).find(".info ").text().trim();
+        homeplayer.push({
+          numberPlayer,
+          avatarPlayer,
+          namePlayer,
+        });
+      });
+      $(".away .d-flex.align-items-center.py-2").each((i, el) => {
+        const numberPlayer = $(el).find(".number").text().trim();
+        const avatarPlayer = $(el).find(".player-avatar").attr("src");
+        const namePlayer = $(el).find(".info ").text().trim();
+        awayplayer.push({
+          numberPlayer,
+          avatarPlayer,
+          namePlayer,
+        });
+      });
+    }
 
     return {
       benchPlayerAway,
       benchPlayerHome,
+      isField,
       home: {
         homeplayer,
         nameClubHome,
