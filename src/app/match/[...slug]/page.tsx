@@ -36,7 +36,7 @@ const MatchSingle: React.FC<Props> = async ({ searchParams: { tab } }) => {
     <div className="border border-[#222] rounded-[8rem] d:ml-[17rem] min-h-[630rem] max-w-[470rem] w-full">
       <div className="px-[15rem] pt-[10rem]">
         <h3 className="font-[700] mb-[3rem]">Trận đấu</h3>
-        <div className="bg-[#181818] rounded-[8rem] flex flex-col  p-[10rem] relative mb-[10rem]">
+        <div className="bg-[#0a10268c] rounded-[8rem] flex flex-col  p-[10rem] relative mb-[10rem]">
           <div className="flex items-center text-[11rem] relative">
             <div className="flex-1 text-center">
               <div className="flex justify-center mb-[10]">

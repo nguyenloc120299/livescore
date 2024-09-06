@@ -24,7 +24,7 @@ const TabLabel: React.FC<Props> = ({
         type="link"
         href={href}
         className={clsx(
-          "w-fit cursor-pointer border-solid border-Gray/9 py-2 max-t:px-2",
+          "w-fit cursor-pointer border-solid border-Gray/9 py-2 max-t:px-2 flex-1 whitespace-nowrap ",
           "mobile-paragraph-p1 t:desktop-heading-h5",
           classTabLabel,
           selected && customClassActive,

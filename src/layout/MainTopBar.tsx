@@ -11,7 +11,7 @@ const MainTopBar = () => {
     <header
       id="app-header"
       className={clsx(
-        "fixed inset-x-0 top-0  w-screen  mx-auto max-w-[1200rem] bg-[#111] z-[99]"
+        "fixed inset-x-0 top-0  w-screen  mx-auto max-w-[1200rem] bg-[#030714] z-[99]"
       )}
     >
       <div className="mx-auto flex h-[60rem] max-w-[1200rem] items-center px-4 t:px-8 gap-[40rem]">

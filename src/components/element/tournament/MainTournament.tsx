@@ -40,7 +40,7 @@ const MainTournament = () => {
             class_league_name={item?.class_league_name}
             nextPage={item?.nextPage}
             imgFlag={item?.imgFlag}
-            slug={item?.slug}
+            slug={item?.nextPage}
             key={index}
           />
         ))}

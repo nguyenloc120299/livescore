@@ -3,8 +3,11 @@ import MatchScores from "@/components/element/MatchScores";
 import { notFound } from "next/navigation";
 import React from "react";
 
+
+
 const HomePage = async () => {
-  const data = await handleCrawlLiveScore();
+  let data = await handleCrawlLiveScore();
+
 
   if (!data) return notFound();
   return (

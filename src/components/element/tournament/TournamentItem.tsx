@@ -20,7 +20,7 @@ const TournamentItem: React.FC<Props> = ({
 }) => {
   return (
     <Link href={`${ROUTES.LEAGUE}/${slug}`}>
-      <div className="rounded-[5rem] text-[12rem] mb-[3rem] min-h-[36rem] px-[8rem] flex items-center bg-[#181818] text-[#aaa] cursor-pointer hover:bg-[#333] hover:text-[#fdfdfd] gap-10">
+      <div className="rounded-[5rem] text-[12rem] mb-[3rem] min-h-[36rem] px-[8rem] flex items-center bg-[#0a10268c] text-[#aaa] cursor-pointer hover:bg-[#333] hover:text-[#fdfdfd] gap-10">
         {imgFlag ? (
           <img
             src={imgFlag}

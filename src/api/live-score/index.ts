@@ -1,11 +1,14 @@
 import cheerio from "cheerio";
 const url = "https://thethao247.vn/livescores/";
 
+
+
 export const handleCrawlLiveScore = async () => {
   try {
     const response = await fetch(url, {
       mode: "no-cors",
-      cache:'no-cache'
+      cache:"no-store"
+    
     });
     const html = await response.text();
     const $ = cheerio.load(html);

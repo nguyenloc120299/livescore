@@ -23,7 +23,7 @@ const MainLayout: React.FC<Props> = ({ children }) => {
         })}
       >
         <MainSideBar />
-        <div className="relative px-5  d:px-[80rem] mt-[70px] d:mt-0 w-full">
+        <div className="relative px-5  d:px-[80rem] mt-[70px] t:mt-0 w-full">
           {" "}
           {children}
         </div>

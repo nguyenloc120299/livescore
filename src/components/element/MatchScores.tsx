@@ -50,7 +50,7 @@ const MatchScores: React.FC<Props> = (props) => {
         {!!props.listMatch &&
           props.listMatch.map((item, index) => (
             <Link href={item.slug} key={index}>
-              <div className="mb-[5rem] flex items-center text-[14px] relative py-[10rem] bg-[#181818] hover:bg-[#333] rounded-[8rem] mx-[10rem]">
+              <div className="mb-[5rem] flex items-center text-[14px] relative py-[10rem] bg-[#0a10268c] hover:bg-[#333] rounded-[8rem] mx-[10rem]">
                 <span className="text-[14rem] font-[700] h-[40rem] flex items-center justify-center flex-0 w-[50rem]">
                   {item.time}
                 </span>

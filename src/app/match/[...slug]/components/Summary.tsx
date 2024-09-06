@@ -29,7 +29,7 @@ const Summary: React.FC<Props> = (props) => {
           <div key={i}>
             <div
               key={i}
-              className="bg-[#181818] min-h-[38rem] border border-[#222] flex flex-nowrap text-[11px] justify-between py-[10rem] relative"
+              className="bg-[#0a10268c] min-h-[38rem] border border-[#222] flex flex-nowrap text-[11px] justify-between py-[10rem] relative"
             >
               <span className="flex justify-center items-center w-[50rem] font-[700]">
                 {item.caption}

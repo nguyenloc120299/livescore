@@ -26,7 +26,7 @@ const Tabs: React.FC<Props> = ({
   return (
     <>
       <div className={className}>
-        <div className='flex gap-[4rem] t:gap-[15rem]'>
+        <div className='flex gap-[4rem] t:gap-[15rem] overflow-auto no-scrollbar'>
           {tabs.map((item, index) => (
             <TabLabel
               key={index}
