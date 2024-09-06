@@ -6,7 +6,7 @@ import clsx from "clsx";
 import MainLayout from "@/layout";
 import NextTopLoader from "nextjs-toploader";
 
-const inter = Inter({ subsets: ["latin"] });
+
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -1,10 +1,26 @@
-import React from "react";
+"use";
+
+import React, { useEffect, useState } from "react";
 import { FaChevronRight } from "react-icons/fa";
 import TournamentItem from "./TournamentItem";
-import handlerCrawlTournament from "@/api/tournament";
 
-const MainTournament = async () => {
-  const data = await handlerCrawlTournament();
+const MainTournament = () => {
+  const [tournament, set_tournament] = useState<Array<any>>([]);
+  const getTournament = async () => {
+    try {
+      const res = await fetch("/api/crawl/tournament");
+      if (res.ok) {
+        const data = await res.json();
+        set_tournament(data)
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getTournament();
+  }, []);
 
   return (
     <div className="px-[10rem] overflow-auto h-screen no-scrollbar">
@@ -17,8 +33,8 @@ const MainTournament = async () => {
         Giải đấu nổi bật
         <FaChevronRight />
       </div>
-      {!!data?.length &&
-        data?.map((item: any, index: number) => (
+      {!!tournament?.length &&
+        tournament?.map((item: any, index: number) => (
           <TournamentItem
             league_name={item?.league_name}
             class_league_name={item?.class_league_name}

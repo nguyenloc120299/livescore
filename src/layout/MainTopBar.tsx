@@ -1,10 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
 import { NAVIGATION_LINK } from "@/constants/menus";
+import useBreakpoint from "@/hooks/useBreakpoint";
 import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 
 const MainTopBar = () => {
+  const breakpoint = useBreakpoint();
   return (
     <header
       id="app-header"
@@ -17,16 +19,18 @@ const MainTopBar = () => {
           <img
             src="https://www.livescore.com/ls-web-assets/svgs/common/livescore-logo-b3b211143dccd9e22d164701d32a390f.svg"
             alt="Logo live score cập nhật tỉ số bóng đá"
+            className="w-full h-full"
           />
         </div>
-        {NAVIGATION_LINK.map((menu, index) => (
-          <Link href={menu.href} key={index}>
-            <div className="flex items-center gap-2">
-              <span>{menu.icon}</span>
-              <span>{menu.title}</span>
-            </div>
-          </Link>
-        ))}
+        {breakpoint !== "mobile" &&
+          NAVIGATION_LINK.map((menu, index) => (
+            <Link href={menu.href} key={index}>
+              <div className="flex items-center gap-2">
+                <span>{menu.icon}</span>
+                <span>{menu.title}</span>
+              </div>
+            </Link>
+          ))}
       </div>
     </header>
   );

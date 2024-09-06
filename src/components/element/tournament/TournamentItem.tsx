@@ -18,8 +18,6 @@ const TournamentItem: React.FC<Props> = ({
   nextPage,
   slug,
 }) => {
-  console.log(slug);
-
   return (
     <Link href={`${ROUTES.LEAGUE}/${slug}`}>
       <div className="rounded-[5rem] text-[12rem] mb-[3rem] min-h-[36rem] px-[8rem] flex items-center bg-[#181818] text-[#aaa] cursor-pointer hover:bg-[#333] hover:text-[#fdfdfd] gap-10">

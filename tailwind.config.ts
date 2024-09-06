@@ -91,6 +91,8 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "bg-button-live-gradient":
+          "linear-gradient(282.07deg, #b71818 5.15%, #e30b0b 50.8%, #ca2727 93.79%)",
       },
     },
   },

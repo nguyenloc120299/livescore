@@ -6,6 +6,8 @@ const useBreakpoint = () => {
   const [breakpoint, setBreakpoint] = useState<BreakpointType | null>(null)
 
   useEffect(() => {
+   
+    
     const handleResize = () => {
       if (window.innerWidth < 720) {
         setBreakpoint('mobile')

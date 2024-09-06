@@ -38,7 +38,7 @@ const MatchScores: React.FC<Props> = (props) => {
             className={clsx("w-[32rem] h-[32rem] flags--category", props.flag)}
           ></span>
           <div className="">
-            <div className="text-[#fdfdfd] font-[700] mb-[2rem] rg">
+            <div className="text-[#fdfdfd] font-[700] mb-[2rem] rg whitespace-break-spaces">
               {props.categoryTitle}
             </div>
             <div className="text-[#aaa] text-[11rem]">{props.region}</div>
